@@ -1,0 +1,23 @@
+
+#注册进eureka
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8888/eureka/
+  instance:
+    prefer-ip-address: true
+#配置网关端口号
+server:
+  port: 8080
+spring:
+  application:
+    name: zuul-server
+#配置网关转发详情
+zuul:
+  routes:
+    api-a:
+      path: /member/**
+      service-id: member-server
+    api-b:
+      path: /order/**
+      service-id: order-server

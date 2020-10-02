@@ -1,0 +1,17 @@
+#eueka的端口号
+server:
+  port: 8888
+eureka:
+  instance:
+    hostname: localhost   #eureka服务端实例名称
+  client:
+    registerWithEureka: false   #服务注册，false表示不将自己注册到eureka服务中
+    fetchRegistry: false         #服务发现，false表示自己不从eureka中获取注册信息
+    #eureka客户端与eureka服务端交互地址，集群版配置对方的地址，单机版配置自己（如果不配置则默认本机8761端口）
+    service-url:
+      #      单机版
+      #      default-zone: http://${eureka.instance.hostname}:${server.port}/eureka/
+      #      集群版，配置另一个注册中心地址
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+  server:
+    enableSelfPreservation: false   #开发阶段关闭eureka自我保护机制
